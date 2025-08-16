@@ -15,8 +15,8 @@ In the following video you can see how the page editor works and how fast the up
 ```bash
 git clone <repository-url>
 cd experiments/cms
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 That's it. The demo automatically:
@@ -27,10 +27,10 @@ That's it. The demo automatically:
 
 ### Commands
 ```bash
-npm run db:backup    # Backup database
-npm run db:reset     # Reset database
-npm run lint         # Run ESLint
-npm run build        # Build for production
+bun run db:backup    # Backup database
+bun run db:reset     # Reset database
+bun run lint         # Run ESLint
+bun run build        # Build for production
 ```
 
 ## What This Is
