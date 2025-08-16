@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { FileUpload } from "./file-upload";
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
 import { FileDetails } from "./file-details";
 import { FileFilters } from "./file-filters";
@@ -19,6 +18,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Checkbox } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
 
 function formatFileSize(bytes: number): string {
   const mb = bytes / 1024 / 1024;
@@ -49,7 +49,6 @@ export function FileGrid({ mode = "default", onSelect, allowedTypes = [] }: File
   const [isLoading, setIsLoading] = useState(true);
   const [selectedFile, setSelectedFile] = useState<ExtendedFileMetadata | null>(null);
   const [gridSize, setGridSize] = useState(6);
-  const [isMobile, setIsMobile] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mediaFilter, setMediaFilter] = useState<"all" | "image" | "video" | "misc">("all");
 
@@ -193,9 +192,6 @@ export function FileGrid({ mode = "default", onSelect, allowedTypes = [] }: File
     if (mode === "picker" && onSelect) {
       onSelect(file.id);
     }
-    if (isMobile) {
-      setIsMobileDetailsOpen(true);
-    }
   };
 
   const handleClearFilters = () => {
@@ -203,21 +199,7 @@ export function FileGrid({ mode = "default", onSelect, allowedTypes = [] }: File
     setMediaFilter("all");
   };
 
-  // Handle window resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
 
-    // Initial check
-    checkMobile();
-
-    // Add resize listener
-    window.addEventListener('resize', checkMobile);
-
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   if (isLoading) {
     return (
@@ -251,7 +233,6 @@ export function FileGrid({ mode = "default", onSelect, allowedTypes = [] }: File
     <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr_320px] h-full">
       <div className="hidden lg:flex flex-col border-r p-4">
         <div className="space-y-4">
-          <FileUpload onUpload={handleFileSelect} />
           <div className="space-y-2">
             <h3 className="text-sm font-medium">Media Type</h3>
             <div className="space-y-2">

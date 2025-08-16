@@ -3,9 +3,10 @@ import { getRecentAnalytics, getMostRequestedAssets } from '@/lib/analytics';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const [recentAnalytics] = await Promise.all([
       getRecentAnalytics(),
       getMostRequestedAssets(),
@@ -13,7 +14,7 @@ export async function GET(
 
     // Filter analytics for the specific asset
     const assetAnalytics = recentAnalytics.filter(
-      (request) => request.asset_id === params.id
+      (request) => request.asset_id === id
     );
 
     // Calculate statistics

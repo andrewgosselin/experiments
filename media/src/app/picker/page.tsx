@@ -3,12 +3,12 @@
 import { FileGrid } from "@/components/file-grid";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 // This would typically come from your environment variables
 const ALLOWED_ORIGINS = process.env.NEXT_PUBLIC_ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'];
 
-export default function PickerPage() {
+function PickerPageContent() {
   const searchParams = useSearchParams();
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -127,5 +127,13 @@ export default function PickerPage() {
         </Button>
       </div>
     </div>
+  );
+}
+
+export default function PickerPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PickerPageContent />
+    </Suspense>
   );
 } 

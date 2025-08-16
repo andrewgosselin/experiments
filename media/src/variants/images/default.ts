@@ -1,4 +1,6 @@
-export const defaultImageVariant = {
+import { ImageVariantConfig } from './types';
+
+export const defaultImageVariant: ImageVariantConfig = {
   name: 'default',
   description: 'Default image variant',
   operations: {
