@@ -2,6 +2,14 @@
 
 A demo project showing what I've learned from using various CMS solutions in business. Built to solve the common problems I've encountered - extensibility, performance, and developer experience.
 
+## 🎥 Demo Video
+In the following video you can see how the page editor works and how fast the update is. Of course this is a very basic implementation, although very extendable via blocks.
+
+<video width="100%" controls>
+  <source src=".github/assets/2025-08-16 13-13-37.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## 🚀 Quick Start
 
 ```bash
