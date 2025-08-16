@@ -9,8 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { UploadIcon, ImageIcon, TagIcon, FileTextIcon } from "lucide-react";
-import { IDKImage } from "@andrewgosselin/idk.media";
+import { TagIcon, FileTextIcon } from "lucide-react";
 import { TagInput } from "@/components/ui/tag-input";
 
 export default function UploadPage() {

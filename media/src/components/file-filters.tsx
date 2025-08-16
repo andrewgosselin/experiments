@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,13 +8,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { GridIcon, ListIcon, FilterIcon, Grid2x2Icon, Grid3x3Icon } from "lucide-react";
 import { ExtendedFileMetadata } from "./file-grid";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useEffect, useState } from "react";
 import {
   DropdownMenuCheckboxItem,
@@ -43,7 +35,6 @@ interface FileFiltersProps {
 }
 
 export function FileFilters({
-  files,
   displayType,
   onDisplayTypeChange,
   selectedTags,
@@ -67,7 +58,7 @@ export function FileFilters({
       setLocalGridSize(size);
       onGridSizeChange?.(size);
     }
-  }, []);
+  }, [onGridSizeChange]);
 
   const handleGridSizeChange = (size: number) => {
     setLocalGridSize(size);

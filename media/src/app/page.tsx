@@ -2,22 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
-import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { 
   FileIcon, 
   ImageIcon, 
-  VideoIcon, 
-  FileTextIcon, 
-  UploadIcon,
-  BarChartIcon,
-  ClockIcon,
   TagIcon,
   BarChart3Icon
 } from "lucide-react";
-import Link from "next/link";
 import { IDKImage } from "@andrewgosselin/idk.media";
 import { Badge } from "@/components/ui/badge";
 import { formatDistanceToNow } from "date-fns";
@@ -38,12 +30,7 @@ function formatFileSize(bytes: number): string {
   return `${mb.toFixed(2)} MB`;
 }
 
-function getFileIcon(mimeType?: string) {
-  if (!mimeType) return <FileIcon className="h-6 w-6 text-muted-foreground" />;
-  if (mimeType.startsWith("image/")) return <ImageIcon className="h-6 w-6 text-muted-foreground" />;
-  if (mimeType.startsWith("video/")) return <VideoIcon className="h-6 w-6 text-muted-foreground" />;
-  return <FileTextIcon className="h-6 w-6 text-muted-foreground" />;
-}
+
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);

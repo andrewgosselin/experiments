@@ -1,5 +1,7 @@
 # ✨ Asset Manager
 
+** This project is still in progress and not production ready **
+
 A modern, zero-dependency asset management system built with Next.js. Store, process, and serve your media assets with automatic optimization and variant generation. Supports multiple storage backends including local filesystem, S3, GCS, and more. **Completely self-hostable, database-free, and lightning fast!** Easily integrate into any CMS via an existing official extension or by making your own!
 
 Also since you can integrate this into any storage provider and configure an `ASSET_URL` per provider, this is also compatible with any pre-existing CDN setup.

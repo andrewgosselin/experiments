@@ -27,8 +27,7 @@ export async function middleware(request: NextRequest) {
     const assetCheck = await fetch(assetUrl);
     if (!assetCheck.ok) {
       // call /api/files?id=${id}&v=${variant} to generate the asset
-      const asset = await fetch(`${APP_URL}/api/files?id=${id}&v=${variant}`);
-      const assetData = await asset.json();
+      await fetch(`${APP_URL}/api/files?id=${id}&v=${variant}`);
     }
     
     const response = NextResponse.rewrite(assetUrl);

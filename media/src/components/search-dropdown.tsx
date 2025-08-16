@@ -8,7 +8,6 @@ import { SearchIcon, FileIcon, ImageIcon, VideoIcon, FileTextIcon } from "lucide
 import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
-import { cn } from "@/lib/utils";
 
 interface SearchResult extends FileMetadata {
   title?: string;

@@ -2,14 +2,13 @@
 
 import { FileGrid } from "@/components/file-grid";
 import { Button } from "@/components/ui/button";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 // This would typically come from your environment variables
 const ALLOWED_ORIGINS = process.env.NEXT_PUBLIC_ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'];
 
 export default function PickerPage() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [isAuthorized, setIsAuthorized] = useState(false);

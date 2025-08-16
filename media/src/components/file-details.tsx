@@ -1,9 +1,8 @@
 "use client";
 
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileIcon, ImageIcon, TagIcon, DownloadIcon, ShareIcon, TrashIcon, XIcon, EditIcon, CheckIcon, BarChart3Icon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { TagIcon, DownloadIcon, ShareIcon, TrashIcon, XIcon, EditIcon, CheckIcon, BarChart3Icon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -146,7 +145,6 @@ export function FileDetails({ file, onClose, onDelete, onUpdate }: FileDetailsPr
   const [editedTitle, setEditedTitle] = useState(file.title || file.name);
   const [editedDescription, setEditedDescription] = useState(file.description || '');
   const [editedTags, setEditedTags] = useState<string[]>(file.tags || []);
-  const [newTag, setNewTag] = useState('');
   const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
 
   useEffect(() => {
@@ -155,11 +153,9 @@ export function FileDetails({ file, onClose, onDelete, onUpdate }: FileDetailsPr
     setEditedTags(file.tags || []);
     setSelectedVariant('source');
     setIsEditing(false);
-  }, [file.id]);
+  }, [file.id, file.title, file.name, file.description, file.tags]);
 
-  const getImageUrl = (variant: string): string => {
-    return `/assets/${file.id}?v=${variant}`;
-  };
+
 
   const getAvailableVariants = () => {
     if (!file.mimeType?.startsWith("image/")) return [];
@@ -198,16 +194,7 @@ export function FileDetails({ file, onClose, onDelete, onUpdate }: FileDetailsPr
     setIsEditing(false);
   };
 
-  const handleAddTag = () => {
-    if (newTag && !editedTags.includes(newTag)) {
-      setEditedTags([...editedTags, newTag]);
-      setNewTag('');
-    }
-  };
 
-  const handleRemoveTag = (tagToRemove: string) => {
-    setEditedTags(editedTags.filter(tag => tag !== tagToRemove));
-  };
 
   const availableVariants = getAvailableVariants();
 

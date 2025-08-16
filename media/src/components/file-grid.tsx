@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { UploadIcon, MoreVerticalIcon, FileIcon, ImageIcon, TagIcon, VideoIcon, FileTextIcon, FilterIcon, PlusIcon, XIcon } from "lucide-react";
+import { MoreVerticalIcon, FileIcon, ImageIcon, TagIcon, VideoIcon, FileTextIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { FileUpload } from "./file-upload";
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
-import { UploadDialog } from "./upload-dialog";
 import { FileDetails } from "./file-details";
 import { FileFilters } from "./file-filters";
 import { IDKImage } from "@andrewgosselin/idk.media";
@@ -20,15 +19,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 function formatFileSize(bytes: number): string {
   const mb = bytes / 1024 / 1024;
@@ -49,41 +39,23 @@ interface FileGridProps {
 
 type MediaFilter = "all" | "image" | "video" | "misc";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05
-    }
-  }
-};
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
 
-export function FileGrid({ mode = "default", onSelect, selectedFileId, allowedTypes = [] }: FileGridProps) {
+export function FileGrid({ mode = "default", onSelect, allowedTypes = [] }: FileGridProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
   const [files, setFiles] = useState<ExtendedFileMetadata[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
-  const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [selectedFile, setSelectedFile] = useState<ExtendedFileMetadata | null>(null);
   const [gridSize, setGridSize] = useState(6);
-  const [isMobileDetailsOpen, setIsMobileDetailsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mediaFilter, setMediaFilter] = useState<"all" | "image" | "video" | "misc">("all");
 
   // Get initial state from URL
   const initialDisplayType = searchParams.get("view") as "grid" | "list" || "grid";
-  const initialMediaFilter = searchParams.get("type") as MediaFilter || "all";
   const initialTags = searchParams.get("tags")?.split(",") || [];
-  const initialSearchQuery = searchParams.get("search") || "";
   
   const [displayType, setDisplayType] = useState<"grid" | "list">(initialDisplayType);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialTags);
@@ -169,15 +141,7 @@ export function FileGrid({ mode = "default", onSelect, selectedFileId, allowedTy
   };
 
   // Update tags with URL sync
-  const handleTagToggle = (tag: string) => {
-    const newTags = selectedTags.includes(tag)
-      ? selectedTags.filter(t => t !== tag)
-      : [...selectedTags, tag];
-    setSelectedTags(newTags);
-    const firstFile = filteredFiles[0];
-    setSelectedFile(firstFile || null);
-    updateUrl(undefined, undefined, newTags);
-  };
+
 
   // Update selected file when filtered files change
   useEffect(() => {
@@ -207,38 +171,9 @@ export function FileGrid({ mode = "default", onSelect, selectedFileId, allowedTy
     }
   };
 
-  const handleFileSelect = (selectedFiles: File[]) => {
-    if (selectedFiles.length > 0) {
-      setPendingFile(selectedFiles[0]);
-      setUploadDialogOpen(true);
-    }
-  };
 
-  const handleUpload = async (metadata: { title: string; description: string; tags: string[] }) => {
-    if (!pendingFile) return;
 
-    try {
-      const formData = new FormData();
-      formData.append("file", pendingFile);
-      formData.append("title", metadata.title);
-      formData.append("description", metadata.description);
-      formData.append("tags", JSON.stringify(metadata.tags));
 
-      const response = await fetch("/api/files", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Failed to upload file");
-      
-      await loadFiles();
-    } catch (error) {
-      console.error("Failed to upload files:", error);
-    } finally {
-      setPendingFile(null);
-      setUploadDialogOpen(false);
-    }
-  };
 
   const handleDelete = async (id: string) => {
     try {

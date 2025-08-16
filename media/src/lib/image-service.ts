@@ -1,7 +1,6 @@
 import sharp from 'sharp';
 import { LocalProvider } from "@andrewgosselin/idk.file-helper";
 import { FileMetadata } from "@andrewgosselin/idk.file-helper";
-import { Readable } from "stream";
 import { unstable_cache } from "next/cache";
 import { promises as fs } from "fs";
 import { revalidatePath } from "next/cache";
@@ -53,7 +52,7 @@ export class ImageService {
 
       // Apply operations based on the variant config
       if (variantConfig.operations) {
-        const { resize, convert, blurhash } = variantConfig.operations;
+        const { resize, convert } = variantConfig.operations;
 
         if (resize) {
           sharpInstance = sharpInstance.resize({
@@ -133,7 +132,7 @@ export class ImageService {
   }
 
   static getVariant = unstable_cache(
-    async (fileId: string, variantName: string): Promise<FileMetadata | null> => {
+    async (fileId: string): Promise<FileMetadata | null> => {
       await ensureUploadDir();
       return provider.findById(fileId);
     },

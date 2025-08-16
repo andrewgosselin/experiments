@@ -107,7 +107,7 @@ export class FileService {
     }
   );
 
-  static getFileVariant = async (id: string, variant: string = 'source'): Promise<any> => {
+  static getFileVariant = async (id: string, variant: string = 'source'): Promise<{ path: string } | null> => {
       await ensureUploadDir();
       const file = await provider.findById(id);
       if (!file) return null;

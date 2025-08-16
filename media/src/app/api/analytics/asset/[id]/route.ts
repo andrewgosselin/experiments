@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const [recentAnalytics, mostRequested] = await Promise.all([
+    const [recentAnalytics] = await Promise.all([
       getRecentAnalytics(),
       getMostRequestedAssets(),
     ]);
