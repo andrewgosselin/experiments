@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
         const responseTime = endTime - startTime;
         
         try {
-          await fetch('http://localhost:3000/api/analytics', {
+          await fetch(`${APP_URL}/api/analytics`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
