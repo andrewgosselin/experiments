@@ -1,0 +1,1 @@
+export const IDK_MEDIA_URL = process.env.IDK_MEDIA_URL || 'http://localhost:3000';
