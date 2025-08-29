@@ -5,7 +5,6 @@ import { getNoriPhotos } from '../data/nori-photos';
 export default async function Home() {
   // Get the nori photos using the cached function
   const noriPhotos = await getNoriPhotos();
-  console.log(noriPhotos);
   
   // Calculate even distribution based on actual length
   const totalImages = noriPhotos.length;
