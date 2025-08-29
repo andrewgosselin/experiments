@@ -29,18 +29,12 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 
-COPY --from=builder /app/data ./data
-
 # Copy and set up entrypoint script
 # COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 # RUN chmod +x /app/docker-entrypoint.sh
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# Ensure nextjs user owns the data directory and can write to it
-RUN chown -R nextjs:nodejs /app/data
-RUN chmod -R 755 /app/data
 
 # Switch to nextjs user
 USER nextjs
