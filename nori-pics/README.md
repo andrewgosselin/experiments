@@ -1,6 +1,6 @@
 # Nori's World - Optimized Cat Photo Gallery
 
-A high-performance, optimized photo gallery built with Next.js 15, featuring your adorable cat Nori in various adorable moments.
+A high-performance, optimized photo gallery built with Next.js 15, featuring the one and only `Nori`.
 
 ## 🚀 Features
 
