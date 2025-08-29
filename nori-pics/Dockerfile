@@ -1,12 +1,11 @@
-FROM node:20-alpine AS base
+FROM oven/bun:1 AS base
 
 FROM base AS deps
-RUN apk add --no-cache libc6-compat python3 make g++ 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
+COPY package.json bun.lock* ./
 RUN \
-  if [ -f package-lock.json ]; then npm ci; \
+  if [ -f bun.lock ]; then bun install --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -16,7 +15,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN \
-  if [ -f package-lock.json ]; then npm run build; \
+  if [ -f bun.lock ]; then bun run build; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -52,4 +51,4 @@ ENV PORT=3000
 
 ENV HOSTNAME="0.0.0.0"
 # ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["node", "server.js"]
+CMD ["bun", "server.js"]
