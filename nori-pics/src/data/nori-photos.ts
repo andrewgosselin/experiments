@@ -213,7 +213,7 @@ export async function getNoriPhotosBatch(limit: number = 100): Promise<{
 
 // Function to get stacked composite images for background columns
 export async function getStackedImages(): Promise<{
-  stackedImages: string[];
+  stackedImages: Array<{ src: string; blurhash: string; width: number; height: number }>;
   total: number;
 }> {
   try {

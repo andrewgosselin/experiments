@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import { getPlaiceholder } from 'plaiceholder';
 
 // Create stacked composite images for background columns
 async function createStackedImages(imageFiles: string[], imagesDir: string, outputDir: string): Promise<string[]> {
@@ -11,8 +12,8 @@ async function createStackedImages(imageFiles: string[], imagesDir: string, outp
   
   const stackedImages: string[] = [];
   const imagesPerStack = 20; // Number of images per stacked composite
-  const stackWidth = 300; // Width of each stack
-  const imageHeight = 200; // Height of each individual image
+  const stackWidth = 400; // Width of each stack (increased for better quality)
+  const imageHeight = 250; // Height of each individual image (increased for better quality)
   const stackHeight = imageHeight * imagesPerStack; // Total height of stack
   
   console.log(`Stack dimensions: ${stackWidth}x${stackHeight}, ${imagesPerStack} images per stack`);
@@ -100,6 +101,22 @@ async function createStackedImages(imageFiles: string[], imagesDir: string, outp
   return stackedImages;
 }
 
+// Generate blurhash for a stacked image
+async function generateStackedImageBlurhash(imagePath: string): Promise<string> {
+  try {
+    const imageBuffer = fs.readFileSync(imagePath);
+    const { base64 } = await getPlaiceholder(imageBuffer, {
+      size: 8, // Small size for faster generation
+      format: ['jpeg'],
+    });
+    return base64;
+  } catch (error) {
+    console.error(`Error generating blurhash for stacked image ${imagePath}:`, error);
+    // Return fallback base64 placeholder
+    return 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXwGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==';
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const startTime = Date.now();
@@ -137,17 +154,36 @@ export async function POST(request: NextRequest) {
     const stackedOutputDir = path.join(process.cwd(), "public", "assets", "images", "nori-stacked");
     const stackedImages = await createStackedImages(imageFiles, imagesDir, stackedOutputDir);
     
-    // Update the generated JSON file with stacked image paths
+    // Generate blurhash placeholders for each stacked image
+    console.log("Generating blurhash placeholders for stacked images...");
+    const stackedImagesWithBlurhash = [];
+    
+    for (let i = 0; i < stackedImages.length; i++) {
+      const imagePath = stackedImages[i];
+      const fullImagePath = path.join(process.cwd(), "public", imagePath);
+      
+      console.log(`Generating blurhash for stacked image ${i + 1}/${stackedImages.length}`);
+      const blurhash = await generateStackedImageBlurhash(fullImagePath);
+      
+      stackedImagesWithBlurhash.push({
+        src: imagePath,
+        blurhash: blurhash,
+        width: 400,
+        height: 5000
+      });
+    }
+    
+    // Update the generated JSON file with stacked image paths and blurhash
     const jsonPath = path.join(process.cwd(), "src", "data", "nori-photos-generated.json");
     if (fs.existsSync(jsonPath)) {
       try {
         const existingData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-        existingData.stackedImages = stackedImages;
-        existingData.totalStacked = stackedImages.length;
+        existingData.stackedImages = stackedImagesWithBlurhash;
+        existingData.totalStacked = stackedImagesWithBlurhash.length;
         existingData.stackedImagesGeneratedAt = new Date().toISOString();
         
         fs.writeFileSync(jsonPath, JSON.stringify(existingData, null, 2));
-        console.log(`Updated JSON file with ${stackedImages.length} stacked images`);
+        console.log(`Updated JSON file with ${stackedImagesWithBlurhash.length} stacked images and blurhash`);
       } catch (error) {
         console.warn("Could not update JSON file with stacked images:", error);
       }

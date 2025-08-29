@@ -2,7 +2,7 @@ import { Image } from '../Image';
 import { VirtualImageColumnClient } from './partials/VirtualImageColumnClient';
 
 interface VirtualImageColumnProps {
-  images: string[];
+  images: string[] | Array<{ src: string; blurhash: string; width: number; height: number }>;
   direction: 'up' | 'down';
   speed?: number;
   className?: string;
@@ -15,11 +15,12 @@ export default function VirtualImageColumn({
   className = ''
 }: VirtualImageColumnProps) {
   // Check if we're using stacked images (they contain "nori-stacked" in the path)
-  const isUsingStackedImages = images.length > 0 && images[0].includes('nori-stacked');
+  const isUsingStackedImages = images.length > 0 && 
+    (typeof images[0] === 'string' ? images[0].includes('nori-stacked') : images[0].src.includes('nori-stacked'));
   
   if (isUsingStackedImages) {
     // For stacked images, treat each as a single tall image
-    const stackedItemHeight = 4000; // 20 images × 200px each
+    const stackedItemHeight = 5000; // 20 images × 250px each
     const imageSets = [...images, ...images, ...images]; // Fewer sets since each is tall
     
     return (
@@ -29,19 +30,26 @@ export default function VirtualImageColumn({
         className={className}
         itemHeight={stackedItemHeight}
       >
-        {imageSets.map((imageSrc, index) => (
-          <div
-            key={`${index}-${imageSrc}`}
-            className="w-full"
-            style={{ height: stackedItemHeight }}
-          >
-            <Image 
-              src={imageSrc} 
-              alt={`Stacked Image ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
+        {imageSets.map((image, index) => {
+          const imageSrc = typeof image === 'string' ? image : image.src;
+          const imageBlurhash = typeof image === 'string' ? undefined : image.blurhash;
+          
+          return (
+            <div
+              key={`${index}-${imageSrc}`}
+              className="w-full"
+              style={{ height: stackedItemHeight }}
+            >
+              <Image 
+                src={imageSrc} 
+                alt={`Stacked Image ${index + 1}`}
+                className="w-full h-full object-cover"
+                blurDataURL={imageBlurhash}
+                placeholder="blur"
+              />
+            </div>
+          );
+        })}
       </VirtualImageColumnClient>
     );
   } else {
@@ -56,19 +64,23 @@ export default function VirtualImageColumn({
         className={className}
         itemHeight={itemHeight}
       >
-        {imageSets.map((imageSrc, index) => (
-          <div
-            key={`${index}-${imageSrc}`}
-            className="w-full"
-            style={{ height: itemHeight }}
-          >
-            <Image 
-              src={imageSrc} 
-              alt={`Image ${index + 1}`}
-              className="w-full h-full"
-            />
-          </div>
-        ))}
+        {imageSets.map((image, index) => {
+          const imageSrc = typeof image === 'string' ? image : image.src;
+          
+          return (
+            <div
+              key={`${index}-${imageSrc}`}
+              className="w-full"
+              style={{ height: itemHeight }}
+            >
+              <Image 
+                src={imageSrc} 
+                alt={`Image ${index + 1}`}
+                className="w-full h-full"
+              />
+            </div>
+          );
+        })}
       </VirtualImageColumnClient>
     );
   }

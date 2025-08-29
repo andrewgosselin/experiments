@@ -11,10 +11,13 @@ export default async function Home() {
   console.log('Total images:', totalImages);
   console.log('Stacked images count:', stackedImages.length);
   console.log('First few stacked images:', stackedImages.slice(0, 3));
-  console.log('Stacked images paths:', stackedImages);
+  
+  // Extract just the src paths for distribution
+  const stackedImagePaths = stackedImages.map(img => img.src);
+  console.log('Stacked images paths:', stackedImagePaths);
   
   // Distribute stacked images evenly across 4 columns
-  const totalStackedImages = stackedImages.length;
+  const totalStackedImages = stackedImagePaths.length;
   console.log(`Distributing ${totalStackedImages} stacked images across 4 columns`);
   
   // For better distribution, let's use a round-robin approach
@@ -23,20 +26,20 @@ export default async function Home() {
   const greenImages: string[] = [];
   const yellowImages: string[] = [];
   
-  stackedImages.forEach((image, index) => {
+  stackedImagePaths.forEach((imagePath, index) => {
     const columnIndex = index % 4;
     switch (columnIndex) {
       case 0:
-        redImages.push(image);
+        redImages.push(imagePath);
         break;
       case 1:
-        blueImages.push(image);
+        blueImages.push(imagePath);
         break;
       case 2:
-        greenImages.push(image);
+        greenImages.push(imagePath);
         break;
       case 3:
-        yellowImages.push(image);
+        yellowImages.push(imagePath);
         break;
     }
   });
