@@ -35,6 +35,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react'],
     useCache: true,
   },
+  output: 'standalone',
 };
 
 export default withPlaiceholder(nextConfig);
