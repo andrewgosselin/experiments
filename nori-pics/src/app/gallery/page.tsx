@@ -2,6 +2,12 @@ import { getNoriPhotosBatch } from '@/data/nori-photos';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { PhotoGrid } from '@/components/PhotoGrid';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Nori's World",
+  description: "Nori's World is a collection of photos of my cat, Nori.",
+}
 
 export default async function GalleryPage() {
   const { photos: noriPhotos, total, hasMore } = await getNoriPhotosBatch(25);

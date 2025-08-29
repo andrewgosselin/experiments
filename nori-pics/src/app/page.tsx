@@ -2,6 +2,13 @@ import Link from 'next/link';
 import VirtualImageColumn from '../components/VirtualImageColumn';
 import { getStackedImages } from '../data/nori-photos';
 import AnimatedHandwritingText from '../components/AnimatedHandwritingText';
+import { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+  title: 'Nori Pictures',
+  description: 'Nori Pictures is a collection of photos of my cat, Nori.',
+}
 
 export default async function Home() {
   // Get stacked composite images for background columns (much faster!)
