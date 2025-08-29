@@ -62,7 +62,6 @@ export function VirtualImageColumnClient({
     <div 
       ref={containerRef}
       className={`relative w-full h-full overflow-hidden ${className}`}
-      style={{ height: '100vh' }}
     >
       <div 
         className="flex flex-col"
