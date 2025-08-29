@@ -1,11 +1,11 @@
-import { getNoriPhotos } from '@/data/nori-photos';
+import { getNoriPhotosBatch } from '@/data/nori-photos';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { PhotoGrid } from '@/components/PhotoGrid';
 
 export default async function GalleryPage() {
-  const noriPhotos = await getNoriPhotos();
-  console.log(noriPhotos);
+  const { photos: noriPhotos, total, hasMore } = await getNoriPhotosBatch(25);
+  console.log(`Loaded ${noriPhotos.length} of ${total} photos initially`);
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
       {/* Back Button */}
@@ -21,7 +21,7 @@ export default async function GalleryPage() {
         </div>
       </div>
 
-      <PhotoGrid photos={noriPhotos} />
+      <PhotoGrid photos={noriPhotos} total={total} hasMore={hasMore} />
     </div>
   );
 }

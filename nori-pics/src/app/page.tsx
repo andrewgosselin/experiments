@@ -1,20 +1,52 @@
 import Link from 'next/link';
 import VirtualImageColumn from '../components/VirtualImageColumn';
-import { getNoriPhotos } from '../data/nori-photos';
+import { getStackedImages } from '../data/nori-photos';
 
 export default async function Home() {
-  // Get the nori photos using the cached function
-  const noriPhotos = await getNoriPhotos();
+  // Get stacked composite images for background columns (much faster!)
+  const { stackedImages, total: totalImages } = await getStackedImages();
   
-  // Calculate even distribution based on actual length
-  const totalImages = noriPhotos.length;
-  const imagesPerColumn = Math.ceil(totalImages / 4);
+  // Debug: Check what we're getting
+  console.log('=== STACKED IMAGES DEBUG ===');
+  console.log('Total images:', totalImages);
+  console.log('Stacked images count:', stackedImages.length);
+  console.log('First few stacked images:', stackedImages.slice(0, 3));
+  console.log('Stacked images paths:', stackedImages);
   
-  // Split the noriPhotos array into 4 parts for each column
-  const redImages = noriPhotos.slice(0, imagesPerColumn).map(photo => photo.src);
-  const blueImages = noriPhotos.slice(imagesPerColumn, imagesPerColumn * 2).map(photo => photo.src);
-  const greenImages = noriPhotos.slice(imagesPerColumn * 2, imagesPerColumn * 3).map(photo => photo.src);
-  const yellowImages = noriPhotos.slice(imagesPerColumn * 3).map(photo => photo.src);
+  // Distribute stacked images evenly across 4 columns
+  const totalStackedImages = stackedImages.length;
+  console.log(`Distributing ${totalStackedImages} stacked images across 4 columns`);
+  
+  // For better distribution, let's use a round-robin approach
+  const redImages: string[] = [];
+  const blueImages: string[] = [];
+  const greenImages: string[] = [];
+  const yellowImages: string[] = [];
+  
+  stackedImages.forEach((image, index) => {
+    const columnIndex = index % 4;
+    switch (columnIndex) {
+      case 0:
+        redImages.push(image);
+        break;
+      case 1:
+        blueImages.push(image);
+        break;
+      case 2:
+        greenImages.push(image);
+        break;
+      case 3:
+        yellowImages.push(image);
+        break;
+    }
+  });
+  
+  console.log(`Column distribution: Red=${redImages.length}, Blue=${blueImages.length}, Green=${greenImages.length}, Yellow=${yellowImages.length}`);
+  console.log('Red column images:', redImages);
+  console.log('Blue column images:', blueImages);
+  console.log('Green column images:', greenImages);
+  console.log('Yellow column images:', yellowImages);
+  console.log('=== END DEBUG ===');
   return (
     <div className="relative w-full h-screen min-h-screen overflow-hidden">
       {/* Background columns with virtual image stacks */}

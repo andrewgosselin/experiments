@@ -1,19 +1,26 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { Search, Filter, Heart, Calendar, Tag } from 'lucide-react';
 import { NoriPhoto } from '@/data/nori-photos';
 import clsx from 'clsx';
+import { loadMorePhotos } from '@/app/actions/load-more-photos';
 
 interface PhotoGridProps {
   photos: NoriPhoto[];
+  total: number;
+  hasMore?: boolean;
 }
 
-export const PhotoGrid = ({ photos }: PhotoGridProps) => {
+export const PhotoGrid = ({ photos: initialPhotos, total, hasMore }: PhotoGridProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'all' | NoriPhoto['category']>('all');
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [photos, setPhotos] = useState<NoriPhoto[]>(initialPhotos);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMorePhotos, setHasMorePhotos] = useState(hasMore);
 
   // Define categories inline to avoid export issues
   const categories = ['all', 'sleeping', 'playing', 'eating', 'exploring', 'cuddling'] as const;
@@ -39,6 +46,38 @@ export const PhotoGrid = ({ photos }: PhotoGridProps) => {
     }
     setFavorites(newFavorites);
   };
+
+  const loadMorePhotosHandler = async () => {
+    if (loading || !hasMorePhotos) return;
+    
+    setLoading(true);
+    try {
+      const nextPage = currentPage + 1;
+      const result = await loadMorePhotos(nextPage, 50);
+      
+      if (result.photos && result.photos.length > 0) {
+        setPhotos(prev => [...prev, ...result.photos]);
+        setCurrentPage(nextPage);
+        setHasMorePhotos(result.hasMore);
+      }
+    } catch (error) {
+      console.error('Error loading more photos:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Automatically load more photos after initial render
+  useEffect(() => {
+    if (hasMorePhotos && photos.length < 100) {
+      // Load more photos to get a good initial set
+      const timer = setTimeout(() => {
+        loadMorePhotosHandler();
+      }, 1000); // Wait 1 second after initial render
+      
+      return () => clearTimeout(timer);
+    }
+  }, []); // Only run once after initial render
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
@@ -161,6 +200,22 @@ export const PhotoGrid = ({ photos }: PhotoGridProps) => {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        
+        {/* Load More Button */}
+        {hasMorePhotos && (
+          <div className="text-center py-8">
+            <button
+              onClick={loadMorePhotosHandler}
+              disabled={loading}
+              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 disabled:bg-pink-300 text-white rounded-lg font-medium transition-colors disabled:cursor-not-allowed"
+            >
+              {loading ? 'Loading...' : 'Load More Photos'}
+            </button>
+            <p className="text-sm text-gray-500 mt-2">
+              {photos.length} of {total} photos loaded
+            </p>
           </div>
         )}
       </div>
