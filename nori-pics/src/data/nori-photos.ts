@@ -68,7 +68,7 @@ export async function getNoriPhotos(): Promise<NoriPhoto[]> {
       console.log(`Loaded ${photos.length} photos from generated data`);
       return photos;
     }
-  } catch (error) {
+  } catch {
     console.log("No generated data found, falling back to dynamic generation");
   }
 
@@ -160,7 +160,7 @@ export async function getNoriPhotosBatch(limit: number = 100): Promise<{
         hasMore: total > limit
       };
     }
-  } catch (error) {
+  } catch {
     console.log("No generated data found, falling back to dynamic generation");
   }
 
@@ -227,7 +227,7 @@ export async function getStackedImages(): Promise<{
         total: generatedData.total || 0
       };
     }
-  } catch (error) {
+  } catch {
     console.log("No generated data found for stacked images");
   }
 

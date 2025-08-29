@@ -7,9 +7,14 @@ interface AnimatedHandwritingTextProps {
   className?: string;
 }
 
+// Define a proper type for the Vara instance
+interface VaraInstance {
+  destroy: () => void;
+}
+
 export default function AnimatedHandwritingText({ text, className = '' }: AnimatedHandwritingTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const varaRef = useRef<any>(null);
+  const varaRef = useRef<VaraInstance | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -19,8 +24,9 @@ export default function AnimatedHandwritingText({ text, className = '' }: Animat
   useEffect(() => {
     if (isClient && containerRef.current) {
       // Clear any existing content first
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
+      const container = containerRef.current;
+      if (container) {
+        container.innerHTML = '';
       }
       
       // Dynamically import Vara to avoid SSR issues
@@ -48,8 +54,9 @@ export default function AnimatedHandwritingText({ text, className = '' }: Animat
       if (varaRef.current && typeof varaRef.current.destroy === 'function') {
         varaRef.current.destroy();
       }
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
+      const container = containerRef.current;
+      if (container) {
+        container.innerHTML = '';
       }
     };
   }, [text, isClient]);

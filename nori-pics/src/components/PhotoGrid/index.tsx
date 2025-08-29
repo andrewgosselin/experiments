@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Search, Filter, Heart, Calendar, Tag } from 'lucide-react';
 import { NoriPhoto } from '@/data/nori-photos';
@@ -47,7 +47,7 @@ export const PhotoGrid = ({ photos: initialPhotos, total, hasMore }: PhotoGridPr
     setFavorites(newFavorites);
   };
 
-  const loadMorePhotosHandler = async () => {
+  const loadMorePhotosHandler = useCallback(async () => {
     if (loading || !hasMorePhotos) return;
     
     setLoading(true);
@@ -65,7 +65,7 @@ export const PhotoGrid = ({ photos: initialPhotos, total, hasMore }: PhotoGridPr
     } finally {
       setLoading(false);
     }
-  };
+  }, [loading, hasMorePhotos, currentPage]);
 
   // Automatically load more photos after initial render
   useEffect(() => {
@@ -77,7 +77,7 @@ export const PhotoGrid = ({ photos: initialPhotos, total, hasMore }: PhotoGridPr
       
       return () => clearTimeout(timer);
     }
-  }, []); // Only run once after initial render
+  }, [hasMorePhotos, photos.length, loadMorePhotosHandler]); // Include all dependencies
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">

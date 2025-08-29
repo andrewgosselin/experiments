@@ -3,6 +3,7 @@ import VirtualImageColumn from '../components/VirtualImageColumn';
 import { getStackedImages } from '../data/nori-photos';
 import AnimatedHandwritingText from '../components/AnimatedHandwritingText';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 
 export const metadata: Metadata = {
@@ -158,10 +159,12 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9369.JPEG" 
                     alt="The Thinker - Nori in a thoughtful pose"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -176,10 +179,12 @@ export default async function Home() {
               </div>
               <div className="lg:col-start-2 lg:col-end-3 lg:pl-8 mt-8 lg:mt-0 hidden lg:block">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9369.JPEG" 
                     alt="The Thinker - Nori in a thoughtful pose"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -197,20 +202,24 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_0323.JPEG" 
                     alt="Somber Night - Nori in a contemplative evening mood"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
               
               <div className="lg:col-start-1 lg:col-end-2 lg:pl-8 hidden lg:block">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_0323.JPEG" 
                     alt="Somber Night - Nori in a contemplative evening mood"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -236,10 +245,12 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9941.JPEG" 
                     alt="Nori hanging onto a chair like Jack holding the door in Titanic"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -254,10 +265,12 @@ export default async function Home() {
               </div>
               <div className="lg:col-start-2 lg:col-end-3 lg:pl-8 mt-8 lg:mt-0 hidden lg:block">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9941.JPEG" 
                     alt="Nori hanging onto a chair like Jack holding the door in Titanic"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -275,20 +288,24 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9485.JPG" 
                     alt="Nori learning to stand on two legs"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
               
               <div className="lg:col-start-1 lg:col-end-2 lg:pl-8 hidden lg:block">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9485.JPG" 
                     alt="Nori learning to stand on two legs"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -314,10 +331,12 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9741.JPG" 
                     alt="Nori eating a chip with gluttonous enthusiasm"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -332,10 +351,12 @@ export default async function Home() {
               </div>
               <div className="lg:col-start-2 lg:col-end-3 lg:pl-8 mt-8 lg:mt-0 hidden lg:block">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9741.JPG" 
                     alt="Nori eating a chip with gluttonous enthusiasm"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -353,21 +374,25 @@ export default async function Home() {
               {/* Mobile: Image first, then text */}
               <div className="lg:hidden mb-6">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9162.JPEG" 
                     alt="Nori in a dramatic pose reminiscent of Dark Souls death screen"
                     className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
               
               <div className="lg:col-start-1 lg:col-end-2 lg:pl-8 hidden lg:block">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <img 
+                  <Image 
                     src="/assets/images/nori/IMG_9162.JPEG" 
                     alt="Nori in a dramatic pose reminiscent of Dark Souls death screen"
                     className="w-full h-full object-cover"
-                  />
+                    width={500}
+                    height={500}
+                    />
                 </div>
               </div>
               <div className="lg:col-start-2 lg:col-end-3 lg:text-left lg:pl-8 mt-8 lg:mt-0">
