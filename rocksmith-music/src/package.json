@@ -1,0 +1,19 @@
+{
+  "name": "cdlc",
+  "version": "1.0.0",
+  "main": "test.js",
+  "scripts": {
+    "fetch": "node fetch.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.9",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
+    "p-limit": "^6.2.0",
+    "url": "^0.11.4"
+  }
+}

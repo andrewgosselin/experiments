@@ -1,0 +1,280 @@
+[
+  {
+    "name": "ips4_IPSSessionFront",
+    "value": "22349c02b35a582f750e1692832b1fd3",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true
+  },
+  {
+    "name": "XSRF-TOKEN",
+    "value": "eyJpdiI6Im8yU0tmZk9WRmIwaDRzbjVGL3RMOWc9PSIsInZhbHVlIjoiWTB2WmVrRE1oNlNuMkh6d0dtc3hiQ3JJenM0dkUzV3RYcGxtNXhiKzVjLzdFajlvSUZKdnJ0eUlQTkl3WFprYzFYOFhsWVBFUy96SWxibytsa0tlMnNWRG05ZTFSelFYQ0pFc3NTK3hSZmNlQmd3YmZGVzJzZW90OFU4M3hybnAiLCJtYWMiOiI2OTVjYjAyOWFmMjI5NzJmMDE4NTZhN2Y4NmYxMWU5Njg2NDY4YWNmMmNmYmI4ZGIxYWRlODljZjJkZmI5ODNmIiwidGFnIjoiIn0%3D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1736818426,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ignition4_session",
+    "value": "eyJpdiI6InFITkt1NHloRERwdDJWaVIxOHdYbWc9PSIsInZhbHVlIjoibHNpOU1lWm12eWhUQWY2M2dnYTVWVGZJK3VlU0l6QStSZ2djcTgwVlpIQU5jam1BZytsR3hzTm9Eb2xzWTEyV1N4aGdUeU9RTEIvYllRUE5WRUFONngyMlR5N1owQzlzNjFvL1Rua0h5TVJMMXpaQ01PSThnb1V5Z3ZLbHFuL0siLCJtYWMiOiIyMTk2ZjAzNjc1NDNjZDdmZjBmOTMzMzIzZWMyNjNkMDYyNWIxOGJmOWJiYzExNjJkNmJkZTk2OGY0YmVlOWU5IiwidGFnIjoiIn0%3D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1736818426,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ips4_hasJS",
+    "value": "true",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1736896223,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_ga_YDD3XZPEJV",
+    "value": "GS1.1.1736809823.1.1.1736811227.59.0.0",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1771371227,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.1259251477.1736809823",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1771371226,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "_ga_D1YLBYTF8H",
+    "value": "GS1.1.1736809823.1.1.1736811227.59.0.0",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1771371227,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "ips4_cookie_consent",
+    "value": "1",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1752448256,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "ips4_cookie_consent_optional",
+    "value": "1",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1752448256,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "ips4_ipsTimezone",
+    "value": "Europe/Amsterdam",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "properSessionStorage",
+    "value": "eyJ1dWlkIjoiNzcwNDcwYjQtMTJlZC00NWNlLTkxMzUtZmM2ZDJiNWRiODRjIiwiZGVwdGgiOjQsInJlZmVycmVyIjoiIiwiZ2NsaWQiOiIiLCJmYmNsaWQiOiIiLCJ1dG1fY2FtcGFpZ24iOiIiLCJ1dG1fc291cmNlIjoiIiwidXRtX21lZGl1bSI6IiIsInV0bV90ZXJtIjoiIiwidXRtX2NvbnRlbnQiOiIiLCJ1dG1fdGVtcGxhdGUiOiIiLCJ1dG1fcmVmZXJyZXIiOiIiLCJ1dG1fYWRzZXQiOiIiLCJ1dG1fc3ViaWQiOiIiLCJyZXZlbnVlIjowLjAwMTIxMDAwMDAwMDAwMDAwMDEsImR5bmFtaWNfZmxvb3JzIjp7fSwibm9fYmlkX2NudCI6e30sImF1Y3Rpb25fY291bnQiOjEyLCJsYXN0X3RocmVzaG9sZCI6MH0%3D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1736813062,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "FCCDCF",
+    "value": "%5Bnull%2Cnull%2Cnull%2C%5B%22CQLK2sAQLK2sAEsACBENBYFoAP_gAEPgACiQINJD7C7FbSFCwH5zaLsAMAhHRsAAQoQAAASBAmABQAKQIAQCgkAQFASgBAACAAAAICRBIQIECAAAAUAAQAAAAAAEAAAAAAAIIAAAgAEAAAAIAAACAIAAEAAIAAAAEAAAmAgAAIIACAAAgAAAAAAAAAAAAAAAAgCAAAAAAAAAAAAAAAAAAQOhSD2F2K2kKFkPCmwXYAYBCujYAAhQgAAAkCBMACgAUgQAgFJIAgCIFAAAAAAAAAQEiCQAAQABAAAIACgAAAAAAIAAAAAAAQQAABAAIAAAAAAAAEAQAAIAAQAAAAIAABEhCAAQQAEAAAAAAAQAAAAAAAAAAABAAA.f4AAAGgAAAA%22%2C%222~70.89.93.108.122.149.196.236.259.311.313.323.358.415.442.449.486.494.495.540.574.609.864.981.1029.1048.1051.1095.1097.1126.1205.1276.1301.1365.1415.1449.1514.1570.1577.1598.1651.1716.1735.1753.1765.1870.1878.1889.1958.1960.2072.2253.2299.2373.2415.2506.2526.2531.2568.2571.2575.2624.2677.2778~dv.%22%2C%223609131C-312A-4368-B1CD-9F66F16FA99A%22%5D%5D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1770505859,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "_cc_id",
+    "value": "c009e2eed2391a586bba3f922cf6b47",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1760137860,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "panoramaId_expiry",
+    "value": "1737414660613",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1737414660,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "panoramaId",
+    "value": "2a3402c015c87b673f94a4ea786c185ca02cb63c5cb6012c4618bc243a91f99d",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1737414660,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "panoramaIdType",
+    "value": "panoDevice",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1737414660,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__gads",
+    "value": "ID=4ec36a8548a3ffb6:T=1736809860:RT=1736811228:S=ALNI_MbMn2fCnprSVvxyOAMdAL-SC7hT8Q",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1770505860,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "__gpi",
+    "value": "UID=00000fb6fc73a9a6:T=1736809860:RT=1736811228:S=ALNI_MYbK18TFPOBwhplUG9vk9EccEMdKQ",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1770505860,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "__eoi",
+    "value": "ID=0090e3e45965a3d8:T=1736809860:RT=1736811228:S=AA-AfjaGyXbcQwrU9deX2y81ZpK8",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1752361860,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "ips4_device_key",
+    "value": "bd76b21356791ee1a995cb4fd07ab649",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1768345876,
+    "httpOnly": true,
+    "secure": true
+  },
+  {
+    "name": "ips4_member_id",
+    "value": "509866",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1744585876,
+    "httpOnly": true,
+    "secure": true
+  },
+  {
+    "name": "ips4_login_key",
+    "value": "76ad7ced11dfb18ba8d092697651a32f",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1744585876,
+    "httpOnly": true,
+    "secure": true
+  },
+  {
+    "name": "ips4_loggedIn",
+    "value": "1736809876",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1744585876,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "ips4_forum_view",
+    "value": "table",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1768345877,
+    "httpOnly": true,
+    "secure": true
+  },
+  {
+    "name": "__qca",
+    "value": "P0-507724994-1736809877397",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1770678677,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "cto_bundle",
+    "value": "R8K_VF9kek9kUlB5NklHa2FoSUhXJTJGbmh3dEtiUVd2SThSMkdqZldLTHNvb0NJOVl1Qm5EJTJCM1FyazFEUDVKUnpZemdGT3JUcVN6TSUyQjI0eTglMkZiSEdTR2VsJTJGSFg2THZ2JTJCVHE5blJha2JNQ0t1cktoVDhvTk5uTkU2ajlodCUyRnZGTU5HR0tTRVpYdjNSWUN1Y2cxdGlLalpTOWVTZyUzRCUzRA",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1770507237,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d",
+    "value": "eyJpdiI6IndvUWpQRGpmUkRZUnBMTHZxOTZzSWc9PSIsInZhbHVlIjoiMmdQbzFGS2ZNS1pud1ZJOFNhT2hiTGJGMDVaWWdIbUI4V0VITjdvWWo0SFIwWmlBWlBBZEZtVnRFVFFJRmQ0Q0dCVTMrZldhNjM0WUpDUlFzSlUwMFdYc1U3NzdyRTc1d1lzRWtQMlJCUk1FR0tJNkpQMzhLV0xxMjFXSVBNSWYrYWpLQW5odTRsK0p5ZDZrNTFIUGpBPT0iLCJtYWMiOiJlODYwODdlNzliZTM1ZTk0YjM3MjgzYWVjYzZlZmIwMTAwZDNkNjcxODhlOTUzMzYwM2I4NGNiMDBiNTQzZTdkIiwidGFnIjoiIn0%3D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1771371218,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cto_bundle",
+    "value": "otLbHF9kek9kUlB5NklHa2FoSUhXJTJGbmh3dEZZUGlXZ2wxUlJ4dFduWHVqc3oxeGJ2ZWt3dDZ4dWg4eFBOc1RZSFB1NWtlalpKc09xJTJCdE9yT0lrcHc5NXlDd0glMkI2bFRBTGxqJTJCYTQxOVJqeE5HTHdONUJ3WENRZCUyRkQ4Uzd4elp1Yjc2a04wU0dqVjI4bVNDRW9iUSUyQjIxb0todGclM0QlM0Q",
+    "domain": "ignition4.customsforge.com",
+    "path": "/",
+    "expires": 1770505897,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "cto_bundle",
+    "value": "R8K_VF9kek9kUlB5NklHa2FoSUhXJTJGbmh3dEtiUVd2SThSMkdqZldLTHNvb0NJOVl1Qm5EJTJCM1FyazFEUDVKUnpZemdGT3JUcVN6TSUyQjI0eTglMkZiSEdTR2VsJTJGSFg2THZ2JTJCVHE5blJha2JNQ0t1cktoVDhvTk5uTkU2ajlodCUyRnZGTU5HR0tTRVpYdjNSWUN1Y2cxdGlLalpTOWVTZyUzRCUzRA",
+    "domain": ".ignition4.customsforge.com",
+    "path": "/",
+    "expires": 1770507237,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "FCNEC",
+    "value": "%5B%5B%22AKsRol_eG4M4l6pUbR4ySYy_ziO-JeFjT6Zdiye1DUlOQm2ptWGjv-SiMDng0dG-aS4Pn0HI8hphvpbA6kKRuYbd4Pj-o-OetTLfsOzV6WmpnehD_rA7ZSn2sqwCA09jii1yWc2dKch1Pyr1NFSgErPZmQ2NYOtwvA%3D%3D%22%5D%5D",
+    "domain": ".customsforge.com",
+    "path": "/",
+    "expires": 1768347228,
+    "httpOnly": false,
+    "secure": false
+  }
+]
