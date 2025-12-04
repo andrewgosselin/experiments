@@ -16,7 +16,7 @@
     "@types/mongodb": "^4.0.7",
     "better-sqlite3": "^12.2.0",
     "mongodb": "^6.17.0",
-    "next": "15.3.5",
+    "next": "15.4.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
